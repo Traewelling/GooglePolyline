@@ -22,7 +22,7 @@ class MagellanPolylineTranscoder
     {
         $floatCoordinates = [];
         foreach ($coordinates as $coordinate) {
-            $floatCoordinates[] = [$coordinate->getY(), $coordinate->getX()];
+            $floatCoordinates[] = [$coordinate->getX(), $coordinate->getY()];
         }
 
         return $this->polylineTranscoder->encodePolyline($floatCoordinates, $precision);
@@ -40,7 +40,7 @@ class MagellanPolylineTranscoder
 
         $points = [];
         foreach ($coordinates as $coordinate) {
-            $points[] = Point::make(x: $coordinate->getLatitude(), y: $coordinate->getLongitude(), srid: $srid);
+            $points[] = Point::make(x: $coordinate->getLongitude(), y: $coordinate->getLatitude(), srid: $srid);
         }
 
         return $points;
